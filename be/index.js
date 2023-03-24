@@ -9,7 +9,7 @@ app.use(cors({ credentials: true, origin: process.env.FE_URL }));
 
 app.post('/', (req, res) => {
     const randomNumber = Math.floor(Math.random() * 100);
-    res.cookie('randomNumber', randomNumber, { maxAge: 2 * 60000, httpOnly: true }); // (2 minutes)
+    res.cookie('randomNumber', randomNumber, { maxAge: 2 * 60000, httpOnly: true, sameSite: 'none', secure: false }); // (2 minutes)
     res.status(200).json(`"Hello from backend with cookie is ${randomNumber}`);
 });
 
